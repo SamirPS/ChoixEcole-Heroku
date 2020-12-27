@@ -1,3 +1,0 @@
-flask
-pysqlite3
-gunicorn 
