@@ -21,7 +21,7 @@
     <div class="absolute">
 
         <select class="custom-select" multiple name=specialite id=spe size="3" >
-            <option disabled  >Spécialité</option>
+            <option disabled  >choix de la (des) spécialité(s)</option>
                 {% for spe in special %}
                 <option value= "{{spe}}" SELECTED>{{spe}}</option>"
                 {% endfor %}
@@ -30,7 +30,7 @@
           <br>
           
           <select class="custom-select"  name=annee id=annee  required >
-            <option disabled  >Année</option>
+            <option disabled  > choix de l'année</option>
             {% for ann in ["3/2","5/2"] %}
             <option value= "{{ann}}" >{{ann}}</option>"
             {% endfor %}
@@ -38,7 +38,7 @@
           <br>
           <br>
           <select class="custom-select"  name=alternance id=alt required>
-            <option disabled  >Alternance</option>
+            <option disabled  >choix de l'alternance</option>
             {% for alt in ["Oui","Non","Peu importe"] %}
             <option value= "{{alt}}" >{{alt}}</option>"
             {% endfor %}
@@ -46,7 +46,7 @@
           <br>
           <br>
           <select class="custom-select" multiple name=region id=region  size="3">
-            <option disabled  >Region</option>
+            <option disabled  >choix de (des) région(s)</option>
             {% for reg in region %}
             <option value= "{{reg}}" SELECTED>{{reg}}</option>"
             {% endfor %}
@@ -60,7 +60,7 @@
     <br>
 
     <div class="form-group w-10">
-    <label for="fname">Notes du CB1</label><br>
+    <label for="fname">Notes CB1</label><br>
         
         
     <label for="fname">Maths</label><br>
