@@ -30,7 +30,7 @@
           <br>
           
           <select class="custom-select"  name=annee id=annee  required >
-            <option selected disabled  > choix de l'année</option>
+            <option selected disabled value="" > choix de l'année</option>
             {% for ann in ["3/2","5/2"] %}
             <option value= "{{ann}}" >{{ann}}</option>"
             {% endfor %}
@@ -38,7 +38,7 @@
           <br>
           <br>
           <select class="custom-select"  name=alternance id=alt required>
-            <option selected disabled >choix de l'alternance</option>
+            <option selected disabled value="" >choix de l'alternance</option>
             {% for alt in ["Oui","Non","Peu importe"] %}
             <option value= "{{alt}}" >{{alt}}</option>"
             {% endfor %}
