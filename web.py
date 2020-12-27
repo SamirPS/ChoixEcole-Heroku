@@ -82,14 +82,10 @@ def prix():
     text = request.args.get('jsdata').split(",")
     prixboursier=main.prix_ecole(text,"Boursier")
     prixnonboursier=main.prix_ecole(text,"NonBoursier")
-
-    return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier)
-
-
-@app.route('/information',methods=['GET','POST'])
-def information():
     ecole=list(set(main.getinfo(request.form.getlist('ecole'))))
-    return render_template('information.html', ecolesinfo=ecole)
+
+    return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier,ecolesinfo=ecole)
+
 
 
 
