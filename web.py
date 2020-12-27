@@ -82,7 +82,7 @@ def prix():
     text = request.args.get('jsdata').split(",")
     prixboursier=main.prix_ecole(text,"Boursier")
     prixnonboursier=main.prix_ecole(text,"NonBoursier")
-    ecole=list(set(main.getinfo(request.form.getlist('ecole'))))
+    ecole=list(set(main.getinfo(text)))
 
     return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier,ecolesinfo=ecole)
 
