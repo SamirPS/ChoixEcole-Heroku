@@ -6,10 +6,32 @@
   <body>
       Prix Boursier : {{prixb}} euros <br>
       Prix Non Boursier : {{prixnb}} euros
-    <br>
-     {% for eco in ecolesinfo %}
-    Nom : {{eco[2]}} ville : {{eco[4]}} region:{{eco[5]}} barre:{{eco[-1]}} concours:{{eco[-3]}}
-    <br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Region</th>
+      <th scope="col">barre</th>
+      <th scope="col">concours</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{% for eco in ecolesinfo %}
+<tr>
+      <th scope="row">{{eco[2]}}</th>
+      <td>{{eco[4]}}</td>
+      <td>{{eco[5]}}</td>
+      <td>{{eco[-1]}}</td>
+      <td>{{eco[-3]}}</td>
+
+</tr>
+    
     {% endfor %}
+  </tbody>
+</table>
+     
   </body>
 </html>
