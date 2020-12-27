@@ -9,8 +9,7 @@ app = Flask(__name__)
 def accueil():
     special = main.renvoie_specialites()
     region = main.renvoie_regions()
-    concours = main.renvoie_admission()
-    return render_template('index.html', special=special,region=region,concours=concours)
+    return render_template('index.html', special=special,region=region)
 
 
 @app.route('/', methods=['POST'])
@@ -19,7 +18,7 @@ def my_form_post():
     #Get data of listbox
     specialites = request.form.getlist('specialite')
     alternance = request.form.getlist('alternance')
-    concours = request.form.getlist('concours')
+    concours = None
     regions = request.form.getlist('region')
     annee = request.form.getlist('annee')
     
@@ -33,8 +32,6 @@ def my_form_post():
         specialites=None
     if alternance==[] or alternance==["Peu importe"]:
         alternance=None
-    if concours==[]:
-        concours=None
     if regions==[]:
         regions=None
     if annee==[]:
