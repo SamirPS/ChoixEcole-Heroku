@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Affichage</title>
+</head>
+
+<body>
+  <p><a href="/">Retour</a></p>
+<select multiple id=search_form_input>
+    {% for eco in ecole %}
+    <option value= "{{eco}}" >{{eco}}</option>"
+    {% endfor %}
+</select>
+
+<div id="place_for_suggestions"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$("#search_form_input").change(function(){
+    var text = $(this).val();
+    $.ajax({
+      url: "/prix",
+      type: "get",
+      data: {jsdata: text.toString()},
+      success: function(response) {
+        $("#place_for_suggestions").html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+});
+</script>
+
+
+</body>
+
+</html>

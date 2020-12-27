@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <style>
+    div.absolute {
+        position: absolute;
+        top:47px;
+        right: 50px;
+        left: 250px;
+      }
+    
+    </style>
+</head>
+<body>
+
+<form method="POST">
+    <div class="absolute">
+
+        <select class="custom-select" multiple name=specialite id=spe size="3" >
+            <option disabled selected >Spécialité</option>
+                {% for spe in special %}
+                <option value= "{{spe}}" SELECTED>{{spe}}</option>"
+                {% endfor %}
+          </select>
+          <br>
+          <br>
+          
+          <select class="custom-select"  name=annee id=annee  required >
+            <option disabled selected >Année</option>
+            {% for ann in ["3/2","5/2"] %}
+            <option value= "{{ann}}" SELECTED>{{ann}}</option>"
+            {% endfor %}
+          </select>
+          <br>
+          <br>
+          <select class="custom-select"  name=alternance id=alt required>
+            <option disabled selected >Alternance</option>
+            {% for alt in ["Oui","Non","Peu importe"] %}
+            <option value= "{{alt}}" SELECTED>{{alt}}</option>"
+            {% endfor %}
+          </select>
+          <br>
+          <br>
+          <select class="custom-select" multiple name=region id=region  size="3">
+            <option disabled selected >Region</option>
+            {% for reg in region %}
+            <option value= "{{reg}}" SELECTED>{{reg}}</option>"
+            {% endfor %}
+          </select>
+          <br>
+          <br>
+          <select class="custom-select" multiple name=concours id=admission size="3">
+            <option disabled selected >Concours</option>
+            {% for con in concours %}
+            <option value= "{{con}}" SELECTED>{{con}}</option>"
+            {% endfor %}
+          </select>
+        
+
+            
+ 
+        </div>
+    <br>
+    <label for="fname">Maths</label><br>
+    <input id="math" required step='0.01' type="number" name="maths" min="0" max="20" >
+    <br>
+    <label for="fname">Physique</label><br>
+    <input id="phy" required step='0.01' type="number" name="physique" min="0" max="20">
+    <br>
+    <label for="fname">SI</label><br>
+    <input id="si" required step='0.01' type="number" name="si" min="0" max="20">
+    <br>
+    <label for="fname">Informatique</label><br>
+    <input id="info" required step='0.01' type="number" name="informatique" min="0" max="20">
+    <br>
+    <label for="fname">Anglais:</label><br>
+    <input id="an" required step='0.01' type="number" name="anglais" min="0" max="20">
+    <br>
+    <label for="fname">Francais</label><br>
+    <input id="fr" required step='0.01' type="number" name="francais" min="0" max="20" >
+    <br>
+    <label for="fname">Modélisation</label><br>
+    <input id="mode" required step='0.01' type="number" name="modelisation" min="0" max="20">
+    <br>
+    <input type="submit">
+
+</form>
+
+
+
+
+
+
+
+
+
+</select>
+</body>
+</html>
