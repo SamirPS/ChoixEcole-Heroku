@@ -8,11 +8,23 @@
 
 <body>
   <p><a href="/">Retour</a></p>
-<select multiple id=search_form_input>
-    {% for eco in ecole %}
-    <option value= "{{eco}}" >{{eco}}</option>"
-    {% endfor %}
-</select>
+
+  <form method="POST" action="{{ url_for('information') }}">
+    
+          <select multiple class="custom-select" id=search_form_input name=ecole size="3">
+            {% for eco in ecole %}
+            <option value= "{{eco}}" >{{eco}}</option>"
+            {% endfor %}
+          </select>
+
+      
+    </div>
+    
+    <input type="submit">
+
+</form>
+
+
 
 <div id="place_for_suggestions"></div>
 

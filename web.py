@@ -86,6 +86,13 @@ def prix():
     return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier)
 
 
+@app.route('/information',methods=['GET','POST'])
+def information():
+    ecole=list(set(main.getinfo(request.form.getlist('ecole'))))
+    return render_template('information.html', ecolesinfo=ecole)
+
+
+
 
 
     

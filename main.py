@@ -47,6 +47,13 @@ def prix_ecole(ecoles, filtre):
 
     return prix
 
+def getinfo(ecole):
+    L=[]
+    for i in ecole:
+        curseur.execute("SELECT * FROM EcoleS WHERE Acronyme=? ",(i,))
+        for resultat in curseur.fetchone():
+            L.append(resultat)
+    return L
 
 def renvoie_idspe(choix):
     
@@ -60,7 +67,6 @@ def renvoie_idspe(choix):
 
 
 def creationtuple(liste):
-
     if len(liste) == 1:
         return f"('{liste[0]}')"
    
