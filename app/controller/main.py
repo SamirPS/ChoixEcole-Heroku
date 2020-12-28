@@ -6,8 +6,8 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/', methods=['GET'])
 def accueil():
-    special = main.renvoie_specialites()
-    region = main.renvoie_regions()
+    special = calcul.renvoie_specialites()
+    region = calcul.renvoie_regions()
     return render_template('index.html', special=special,region=region,lens=len(special)+2,lenr=len(region)+2)
 
 
@@ -24,7 +24,7 @@ def my_form_post():
     print(regions)
 
 
-    specialites =main.renvoie_idspe(specialites)
+    specialites =calcul.renvoie_idspe(specialites)
     
     #Check list vide
     if specialites==[]:
@@ -63,7 +63,7 @@ def my_form_post():
             "francais":francais,
             "modelisation":modelisation}
 
-    ecole=main.filtre(choix_utilisateur,notes)
+    ecole=calcul.filtre(choix_utilisateur,notes)
     ecolesdef=[]
 
     for eco in ecole:
@@ -78,9 +78,9 @@ def my_form_post():
 @bp.route('/prix',methods=['GET'])
 def prix():
     text = request.args.get('jsdata').split(",")
-    prixboursier=main.prix_ecole(text,"Boursier")
-    prixnonboursier=main.prix_ecole(text,"NonBoursier")
-    ecole=list(set(main.getinfo(text)))
+    prixboursier=calcul.prix_ecole(text,"Boursier")
+    prixnonboursier=calcul.prix_ecole(text,"NonBoursier")
+    ecole=list(set(calcul.getinfo(text)))
 
     return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier,ecolesinfo=ecole)
 
