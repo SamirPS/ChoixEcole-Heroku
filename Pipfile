@@ -7,6 +7,10 @@ name = "pypi"
 flask = "*"
 pysqlite3 = "*"
 gunicorn = "*"
+python-dotenv = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-sslify = "*"
 
 [dev-packages]
 
