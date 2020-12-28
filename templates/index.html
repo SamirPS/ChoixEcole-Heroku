@@ -28,23 +28,15 @@
                 {% endfor %}
           </select>
           <br>
-        
-            
-          <select class="custom-select" multiple name=region id=region  size="3" >
-            <option disabled  >choix de (des) région(s)</option>
-             <option value="peu importe" >peu importe</option>
-            {% for reg in region %}
-            <option value= "{{reg}}" SELECTED>{{reg}}</option>"
-            {% endfor %}
-          </select>
+          <br>
           
-         <br>
           <select class="custom-select"  name=annee id=annee  required >
             <option selected disabled value="" > choix de l'année</option>
             {% for ann in ["3/2","5/2"] %}
             <option value= "{{ann}}" >{{ann}}</option>"
             {% endfor %}
           </select>
+          <br>
           <br>
           <select class="custom-select"  name=alternance id=alt required>
             <option selected disabled value="" >choix de l'alternance</option>
@@ -53,7 +45,15 @@
             {% endfor %}
           </select>
           <br>
-        
+          <br>
+          <select class="custom-select" multiple name=region id=region  size="3">
+            <option disabled  >choix de (des) région(s)</option>
+             <option value="peu importe" >peu importe</option>
+            {% for reg in region %}
+            <option value= "{{reg}}" SELECTED>{{reg}}</option>"
+            {% endfor %}
+          </select>
+          <br>
         
 
             
