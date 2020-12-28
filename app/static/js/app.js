@@ -17,7 +17,8 @@
 })();
 
 let deferredPrompt;
-const btnAdd = document.querySelector('#btnAdd');
+const btnAdd = document.getElementById('btnAdd');
+
 
 window.addEventListener('beforeinstallprompt', (e) => {
   console.log('beforeinstallprompt event fired');
