@@ -45,30 +45,11 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(fetch(event.request));
 });
 
-self.addEventListener('fetch', (evt) => {
-  if (evt.request.mode !== 'navigate') {
-    return;
-  }
-  evt.respondWith(fetch(evt.request).catch(() => {
-      return caches.open(CACHE_NAME).then((cache) => {
-        return cache.match('offline.html');
-      });
-    })
-  );
-});
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     fetch(event.request).catch(function() {
       return caches.match(event.request);
-    })
-  );
-});
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
     })
   );
 });
