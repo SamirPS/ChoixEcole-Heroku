@@ -9,7 +9,7 @@ app = Flask(__name__)
 def accueil():
     special = main.renvoie_specialites()
     region = main.renvoie_regions()
-    return render_template('index.html', special=special,region=region,lens=len(special),lenr=len(region))
+    return render_template('index.html', special=special,region=region,lens=len(special)+2,lenr=len(region)+2)
 
 
 @app.route('/', methods=['POST'])
