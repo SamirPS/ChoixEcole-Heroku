@@ -32,7 +32,7 @@ def my_form_post():
         specialites=None
     if alternance==[] or alternance==["Peu importe"]:
         alternance=None
-    if regions==[]:
+    if regions==[] or "peu importe" in regions:
         regions=None
     if annee==[]:
         annee=None
