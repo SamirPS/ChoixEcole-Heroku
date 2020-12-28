@@ -1,116 +1,95 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 20 19:41:49 2018
-@author: samir
-"""
+from flask import Flask,Blueprint, session, redirect, url_for, request,render_template
+import calcul
 
-import sqlite3
-connexion = sqlite3.connect("choixecole.db")
-curseur = connexion.cursor()
+bp = Blueprint('main', __name__)
 
 
-def renvoie_admission():
-
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT Admission FROM EcoleS")
-    ]
-
-
-def renvoie_specialites():
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT NomSpe FROM Specialite")
-    ]
+@app.route('/', methods=['GET'])
+def accueil():
+    special = main.renvoie_specialites()
+    region = main.renvoie_regions()
+    return render_template('index.html', special=special,region=region,lens=len(special)+2,lenr=len(region)+2)
 
 
-def renvoie_regions():
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT Region FROM EcoleS")
-    ]
-
-
-def prix_ecole(ecoles, filtre):
-    prix = 0
-    groupe=[]
-    for i in ecoles:
-        curseur.execute("SELECT Groupe FROM EcoleS WHERE Acronyme=? ",(i,))
-        for resultat in curseur.fetchall():
-            groupe.append(resultat[0])
-            
-    for i in list(set(groupe)):
-        curseur.execute(f"SELECT  {filtre} FROM Coefficient WHERE Groupe=?",(i,))
-        for resultat in curseur.fetchall():
-            prix += resultat[0]
-
-    return prix
-
-def getinfo(ecole):
-    L=[]
-    for i in ecole:
-        curseur.execute("SELECT * FROM EcoleS WHERE Acronyme=? ",(i,))
-        for resultat in curseur.fetchall():
-            L.append(resultat)
-            break
-    return L
-
-def renvoie_idspe(choix):
+@app.route('/', methods=['POST'])
+def my_form_post():
     
-    return tuple(
-        spe[0]
-        for i in tuple(choix)
-        for spe in curseur.execute(
-            "SELECT idspecialite FROM specialite WHERE nomspe=?",(i,)
-        )
-    )
-
-
-def creationtuple(liste):
-    if len(liste) == 1:
-        return f"('{liste[0]}')"
-   
-    return tuple(liste)
-
-
-def filtre(choix_utilisateur, notes):
-    conds = []
-
-    """Le none correspond au fait que l'utilisateur n'as rien choisi"""
-    if choix_utilisateur["specialites"] != None:
-        conds.append(["Idspe", "IN", choix_utilisateur["specialites"]])
-    if choix_utilisateur["alternance"] != None:
-        conds.append(["Alternance", "IN", choix_utilisateur["alternance"]])
-    if choix_utilisateur["concours"] != None:
-        conds.append(["Admission", "IN", choix_utilisateur["concours"]])
-    if choix_utilisateur["regions"] != None:
-        conds.append(["Region", "IN", choix_utilisateur["regions"]])
-
-    if choix_utilisateur["annee"] == ("3/2",):
-        bonif_str = "Bonification"
-    else:
-        bonif_str = "0"
-
-    requete = (
-        f"""
-        SELECT DISTINCT id,Nom,Admission,Commune,Alternance,Acronyme,NomSpe
-        FROM EcoleSpe
-        JOIN EcoleS on EcoleSpe.IdEcole=EcoleS.id
-        JOIN Specialite on EcoleSpe.IdSpe=Specialite.idspecialite
-        JOIN Coefficient on Coefficient.Groupe=EcoleS.Groupe
-        WHERE {notes["maths"]}*Maths+
-        {notes["physique"]}*Physique+
-        {notes["si"]}*SI+
-        {notes["informatique"]}*Informatique+
-        {notes["anglais"]}*Anglais+
-        {notes["francais"]}*Francais+
-        {notes["modelisation"]}*Modelisation+
-        {bonif_str} >= Points """
-    )
+    #Get data of listbox
+    specialites = request.form.getlist('specialite')
+    alternance = request.form.getlist('alternance')
+    concours = None
+    regions = request.form.getlist('region')
+    annee = request.form.getlist('annee')
     
-    for var in conds:
-        requete += f" AND {var[0]} {var[1]}  {creationtuple(var[2])}"
+    print(regions)
 
 
-    return [ecole for ecole in curseur.execute(requete)]
+    specialites =main.renvoie_idspe(specialites)
+    
+    #Check list vide
+    if specialites==[]:
+        specialites=None
+    if alternance==[] or alternance==["Peu importe"]:
+        alternance=None
+    if regions==[] or "peu importe" in regions:
+        regions=None
+    if annee==[]:
+        annee=None
+        
+    print(regions)
+
+    choix_utilisateur={"specialites":specialites,
+                        "alternance":alternance,
+                        "concours":concours,
+                        "regions":regions,
+                        "annee":annee}
+
+    
+
+    #Get Notes
+    maths = request.form['maths']
+    physique=request.form['physique']
+    si=request.form['si']
+    informatique=request.form['informatique']
+    anglais=request.form['anglais']
+    francais=request.form['francais']
+    modelisation=request.form['modelisation']
+
+    notes={"maths":maths,
+            "physique":physique,
+            "si":si,
+            "informatique":informatique,
+            "anglais":anglais,
+            "francais":francais,
+            "modelisation":modelisation}
+
+    ecole=main.filtre(choix_utilisateur,notes)
+    ecolesdef=[]
+
+    for eco in ecole:
+        if eco[5] not in ecolesdef:
+            ecolesdef.append(eco[5])
+
+
+
+    
+    return render_template('affichage.html', ecole=ecolesdef)
+
+@app.route('/prix',methods=['GET'])
+def prix():
+    text = request.args.get('jsdata').split(",")
+    prixboursier=main.prix_ecole(text,"Boursier")
+    prixnonboursier=main.prix_ecole(text,"NonBoursier")
+    ecole=list(set(main.getinfo(text)))
+
+    return render_template('prix.html', prixb=prixboursier,prixnb=prixnonboursier,ecolesinfo=ecole)
+
+
+
+
+
+
+    
+
+        
+       
