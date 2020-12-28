@@ -4,14 +4,14 @@ import calcul
 bp = Blueprint('main', __name__)
 
 
-@app.route('/', methods=['GET'])
+@bp.route('/', methods=['GET'])
 def accueil():
     special = main.renvoie_specialites()
     region = main.renvoie_regions()
     return render_template('index.html', special=special,region=region,lens=len(special)+2,lenr=len(region)+2)
 
 
-@app.route('/', methods=['POST'])
+@bp.route('/', methods=['POST'])
 def my_form_post():
     
     #Get data of listbox
@@ -75,7 +75,7 @@ def my_form_post():
     
     return render_template('affichage.html', ecole=ecolesdef)
 
-@app.route('/prix',methods=['GET'])
+@bp.route('/prix',methods=['GET'])
 def prix():
     text = request.args.get('jsdata').split(",")
     prixboursier=main.prix_ecole(text,"Boursier")
