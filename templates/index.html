@@ -17,11 +17,11 @@
 </head>
 <body>
 
- <p>Utiliser la touche Ctrl pour une sélection multiple/p>
+ <p>Utiliser la touche Ctrl pour une sélection multiple</p>
 <form method="POST">
     <div class="absolute">
 
-        <select class="custom-select" multiple name=specialite id=spe >
+        <select class="custom-select" multiple name=specialite id=spe size="3" >
             <option disabled  >choix de la (des) spécialité(s)</option>
                 {% for spe in special %}
                 <option value= "{{spe}}" SELECTED>{{spe}}</option>"
@@ -30,7 +30,7 @@
           <br>
         
             
-          <select class="custom-select" multiple name=region id=region >
+          <select class="custom-select" multiple name=region id=region  size="3" >
             <option disabled  >choix de (des) région(s)</option>
              <option value="peu importe" >peu importe</option>
             {% for reg in region %}
