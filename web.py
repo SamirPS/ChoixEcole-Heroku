@@ -22,7 +22,7 @@ def my_form_post():
     regions = request.form.getlist('region')
     annee = request.form.getlist('annee')
     
-
+    print(regions)
 
 
     specialites =main.renvoie_idspe(specialites)
@@ -36,6 +36,8 @@ def my_form_post():
         regions=None
     if annee==[]:
         annee=None
+        
+    print(regions)
 
     choix_utilisateur={"specialites":specialites,
                         "alternance":alternance,
