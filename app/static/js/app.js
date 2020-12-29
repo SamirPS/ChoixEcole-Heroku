@@ -90,4 +90,4 @@ function resizeToMinimum(w,h){
     h=h>window.outerHeight?h:window.outerHeight;
     window.resizeTo(w, h);
 };
-window.addEventListener('resize', function(){resizeToMinimum(100,100)}, false)
+window.addEventListener('resize', function(){resizeToMinimum(100,100)}, false);
