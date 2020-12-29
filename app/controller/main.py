@@ -73,7 +73,7 @@ def my_form_post():
 
 
     
-    return render_template('affichage.html', ecole=ecolesdef)
+    return render_template('affichage.html', ecole=ecolesdef,lene=len(ecolesdef)+1)
 
 @bp.route('/prix',methods=['GET'])
 def prix():
