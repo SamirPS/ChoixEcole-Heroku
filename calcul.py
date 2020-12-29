@@ -6,9 +6,8 @@ Created on Sat Oct 20 19:41:49 2018
 """
 
 import sqlite3
-connexion = sqlite3.connect("choixecole.db")
+connexion = sqlite3.connect("app/static/DB/choixecole.db")
 curseur = connexion.cursor()
-
 
 def renvoie_admission():
 
