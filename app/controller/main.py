@@ -20,10 +20,9 @@ def my_form_post():
     concours = None
     regions = request.form.getlist('region')
     annee = request.form.getlist('annee')
-    
-    print(regions)
-
-
+    ef=request.form.getlist('typec')
+     
+  
     specialites =calcul.renvoie_idspe(specialites)
     
     #Check list vide
@@ -35,14 +34,15 @@ def my_form_post():
         regions=None
     if annee==[]:
         annee=None
+    if ef==[] or "peu importe" in ef:
+        ef=None
         
-    print(regions)
-
     choix_utilisateur={"specialites":specialites,
                         "alternance":alternance,
                         "concours":concours,
                         "regions":regions,
-                        "annee":annee}
+                        "annee":annee,
+                        "effort":ef}
 
     
 
