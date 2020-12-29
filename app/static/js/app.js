@@ -84,3 +84,10 @@ window.addEventListener('appinstalled', logAppInstalled);
 function logAppInstalled(evt) {
   console.log('App was installed.', evt);
 }
+
+function resizeToMinimum(w,h){
+    w=w>window.outerWidth?w:window.outerWidth;
+    h=h>window.outerHeight?h:window.outerHeight;
+    window.resizeTo(w, h);
+};
+window.addEventListener('resize', function(){resizeToMinimum(100,100)}, false)
