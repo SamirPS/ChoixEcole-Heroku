@@ -74,6 +74,13 @@
             {% endfor %}
           </select>
           <br>
+      
+      <select class="custom-select"  name=typec id=typec  required >
+            <option selected disabled value="" >Effort financier</option>
+            {% for type in ["Public","Privé","peu importe"] %}
+            <option value= "{{type}}" >{{type}}</option>"
+            {% endfor %}
+          </select>
         
 
             
