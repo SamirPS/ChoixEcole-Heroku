@@ -11,7 +11,7 @@ def accueil():
     return render_template('index.html', special=special,region=region,lens=len(special)+2,lenr=len(region)+2)
 
 
-@bp.route('/', methods=['POST'])
+@bp.route('/ecole', methods=['POST'])
 def my_form_post():
     
     #Get data of listbox
