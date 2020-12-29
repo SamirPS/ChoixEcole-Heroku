@@ -5,7 +5,7 @@
   "theme_color": "transparent",
   "background_color": "transparent",
   "display": "minimal-ui",
-  "orientation": "portrait",
+  "orientation": "any",
   "scope": "/",
   "start_url": "/",
   "icons": [
