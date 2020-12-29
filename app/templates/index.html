@@ -50,7 +50,7 @@
           <br>
           <br>
           
-          <select class="custom-select"  name=annee id=annee  required >
+          <select class="custom-select"  name=annee id=annee  required size="3" >
             <option selected disabled value="" > choix de l'année</option>
             {% for ann in ["3/2","5/2"] %}
             <option value= "{{ann}}" >{{ann}}</option>"
@@ -58,7 +58,7 @@
           </select>
           <br>
           <br>
-          <select class="custom-select"  name=alternance id=alt required>
+          <select class="custom-select"  name=alternance id=alt required size="3">
             <option selected disabled value="" >choix de l'alternance</option>
             {% for alt in ["Oui","Non","Peu importe"] %}
             <option value= "{{alt}}" >{{alt}}</option>"
@@ -75,7 +75,7 @@
           </select>
           <br>
       
-      <select class="custom-select"  name=typec id=typec  required >
+      <select class="custom-select"  name=typec id=typec  required size="3" >
             <option selected disabled value="" >Effort financier</option>
             {% for type in ["Public","Privé","peu importe"] %}
             <option value= "{{type}}" >{{type}}</option>"
