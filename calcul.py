@@ -86,6 +86,8 @@ def filtre(choix_utilisateur, notes):
         conds.append(["Admission", "IN", choix_utilisateur["concours"]])
     if choix_utilisateur["regions"] != None:
         conds.append(["Region", "IN", choix_utilisateur["regions"]])
+    if choix_utilisateur["effort"] != None:
+        conds.append(["statut", "IN", choix_utilisateur["effort"]])
 
     if choix_utilisateur["annee"] == ("3/2",):
         bonif_str = "Bonification"
