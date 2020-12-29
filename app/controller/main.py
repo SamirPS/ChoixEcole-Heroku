@@ -1,4 +1,7 @@
 from flask import Flask,Blueprint, session, redirect, url_for, request,render_template
+import sys
+sys.path.append('/app/controller/')
+
 import calcul
 
 bp = Blueprint('main', __name__)
