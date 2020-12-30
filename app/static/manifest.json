@@ -1,7 +1,7 @@
 {
-  "name": "ChoixEcole",
+  "name": "ChoixEcoleWeb",
   "short_name": "ChoixEcole",
-  "description": "PWA of choixecole",
+  "description": "ChoixEcole Version Mobile",
   "theme_color": "transparent",
   "background_color": "transparent",
   "display": "fullscreen",
