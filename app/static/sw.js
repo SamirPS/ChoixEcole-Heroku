@@ -8,6 +8,9 @@ if (workbox) {
 
   workbox.routing.registerRoute(
     /\.(?:js|css)$/,
+     workbox.strategies.staleWhileRevalidate({
+      cacheName: 'static-resources',
+    }),
   );
 
   workbox.routing.registerRoute(
