@@ -4,7 +4,7 @@
   "description": "PWA of choixecole",
   "theme_color": "transparent",
   "background_color": "transparent",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
   "start_url": "/",
