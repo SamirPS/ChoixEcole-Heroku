@@ -1,0 +1,63 @@
+.navbar{
+    background-color: #F5F5F5;
+}
+
+.italic{
+    font-style: italic;
+    font-weight: bolder;
+}
+
+button{
+    border: none;
+    background-color: #FFF;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+}
+
+button:hover{
+    background-color: #F5F5F5;
+    border: 1px solid #FFF;
+    transition: 0.2s;
+}
+
+h3{
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.form-group{
+    width: 100%;
+}
+
+.form-group input{
+    width: 100%;
+}
+
+input[type='submit']{
+    padding: 10px;
+    border: none;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+input[type='submit']:hover{
+    box-shadow: 2px 2px 4px black;
+    transition: 0.2s;
+}
+
+a{
+    border: none;
+    text-decoration: none;
+    color: black!important;
+    background-color: #FFF!important;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+a:hover{
+    text-decoration: none;
+    border: none;
+    box-shadow: 2px 2px 4px black;
+    transition: 0.2s;
+}
