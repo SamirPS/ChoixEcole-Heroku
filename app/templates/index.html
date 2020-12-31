@@ -78,48 +78,43 @@
 
             <p class="italic">Utiliser la touche Ctrl pour une sélection multiple</p>
             
-          <label>
-                 Choix de la (des) spécialité(s)
-            <br>
+                 <label for="spe">Choix de la (des) spécialité(s)</label>
                  <select class="custom-select" multiple name=specialite id=spe size="{{lens}}" >
                     {% for spe in special %}
                     <option value= "{{spe}}" SELECTED>{{spe}}</option>"
                     {% endfor %}
               </select>
-          </label>
               <br>
               <br>
               
-          <label>
-              choix de l'année
-            <br>
+              
+             <label for="annee">Choix de l'année</label>
               <select class="custom-select"  name=annee id=annee  required size="3" >
                 {% for ann in ["3/2","5/2"] %}
                 <option value= "{{ann}}" >{{ann}}</option>"
                 {% endfor %}
               </select>
-            </label>
+           
           
           
               <br>
               <br>
-          <label>
-              Choix de l'alternance
-            <br>
+          
+          
+              <label for="alt">Choix de l'alternance</label>
               <select class="custom-select"  name=alternance id=alt required size="4">
                 {% for alt in ["Oui","Non","Peu importe"] %}
                 <option value= "{{alt}}" >{{alt}}</option>"
                 {% endfor %}
               </select>
-           </label>
+          
           
           
               <br>
               <br>
           
-          <label>
-              Choix de (des) région(s)
-            <br>
+              
+              <label for="alt">Choix de (des) région(s)</label>
               <select class="custom-select" multiple name=region id=region  size="{{lenr}}">
                 <option value="peu importe" >peu importe</option>
                 {% for reg in region %}
@@ -127,19 +122,16 @@
                 {% endfor %}
               </select>
             
-           </label>
               <br>
               <br>
 
-          <label>
-            Effort financier
-            <br>
+            
+            <label for="typec">Effort financier</label>
           <select class="custom-select"  name=typec id=typec  required size="4" >
                 {% for type in ["Public","Privé","peu importe"] %}
                 <option value= "{{type}}" >{{type}}</option>"
                 {% endfor %}
-              </select
-          </label>
+          </select>
             
 
                 
