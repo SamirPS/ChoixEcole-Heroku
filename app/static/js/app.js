@@ -28,6 +28,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 btnAdd.addEventListener('click', (e) => {
   btnAdd.style.visibility = 'hidden';
+  if (deferredPrompt) {
   deferredPrompt.prompt();
   deferredPrompt.userChoice
     .then((choiceResult) => {
@@ -38,6 +39,7 @@ btnAdd.addEventListener('click', (e) => {
       }
       deferredPrompt = null;
     });
+  }
 });
 
 window.addEventListener('appinstalled', (evt) => {
