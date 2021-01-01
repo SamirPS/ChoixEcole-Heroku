@@ -19,11 +19,19 @@
 let deferredPrompt;
 const btnAdd = document.getElementById('installButton');
 
+if (window.matchMedia('(display-mode: fullscreen)').matches) {
+  btnAdd.style.visibility = 'hidden';
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
   console.log('beforeinstallprompt event fired');
   e.preventDefault();
   deferredPrompt = e;
-  btnAdd.style.visibility = 'visible';
+  if (window.matchMedia('(display-mode: fullscreen)').matches) {
+  btnAdd.style.visibility = 'hidden';
+  }else{
+    btnAdd.style.visibility = 'visible';
+  }
 });
 
 btnAdd.addEventListener('click', (e) => {
