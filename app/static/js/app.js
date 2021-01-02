@@ -28,7 +28,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   if (window.matchMedia('(display-mode: fullscreen)').matches) {
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  btnAdd.style.visibility = 'visible';
+}else{
   btnAdd.style.visibility = 'hidden';
+}
   }else{
     btnAdd.style.visibility = 'visible';
   }
