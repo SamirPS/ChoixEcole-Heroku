@@ -10,12 +10,7 @@ connexion = sqlite3.connect("static/db/choixecole.db")
 curseur = connexion.cursor()
 
 
-def renvoie_admission():
-
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT Admission FROM EcoleS")
-    ]
+renvoie_admission=lambda :[resultat[0]for resultat in curseur.execute("SELECT DISTINCT Admission FROM EcoleS")]
 
 
 def renvoie_specialites():
