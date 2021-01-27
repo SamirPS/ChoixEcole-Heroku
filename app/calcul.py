@@ -13,18 +13,10 @@ curseur = connexion.cursor()
 renvoie_admission=lambda :[resultat[0]for resultat in curseur.execute("SELECT DISTINCT Admission FROM EcoleS")]
 
 
-def renvoie_specialites():
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT NomSpe FROM Specialite")
-    ]
+renvoie_specialites=lambda :[resultat[0]for resultat in curseur.execute("SELECT DISTINCT NomSpe FROM Specialite")]
 
 
-def renvoie_regions():
-    return [
-        resultat[0]
-        for resultat in curseur.execute("SELECT DISTINCT Region FROM EcoleS")
-    ]
+renvoie_regions=lambda :[resultat[0]for resultat in curseur.execute("SELECT DISTINCT Region FROM EcoleS")]
 
 
 def prix_ecole(ecoles, filtre):
@@ -48,7 +40,6 @@ def getinfo(ecole):
         curseur.execute("SELECT * FROM EcoleS WHERE Acronyme=? ",(i,))
         for resultat in curseur.fetchall():
             L.append(resultat)
-            break
     return L
 
 def renvoie_idspe(choix):
