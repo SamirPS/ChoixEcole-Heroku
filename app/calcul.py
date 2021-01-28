@@ -37,10 +37,9 @@ def prix_ecole(ecoles, filtre):
 def getinfo(ecole):
     L=[]
     for i in ecole:
-        curseur.execute("SELECT * FROM EcoleS WHERE Acronyme=? ",(i,))
+        curseur.execute("SELECT DISTINCT * FROM EcoleS WHERE Acronyme=? ",(i,))
         for resultat in curseur.fetchall():
             L.append(resultat)
-            break
     return L
 
 def renvoie_idspe(choix):
